@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AquaField · BY — Беспилотный полив полей в Беларуси</title>
+  <meta name="description" content="Полив полей дроном 50 л — 45 BYN/га. Без колей, без предоплаты. Выезд по всей Беларуси. Вода попадает туда, куда не доедет техника.">
+  <meta property="og:title" content="AquaField · BY — Беспилотный полив полей">
+  <meta property="og:description" content="Дрон 50 л поливает поле по GPS-маршруту. 45 BYN за гектар. Платите после работы. Выезжаем в любой район Беларуси.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/hero-drone.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800;1,9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/icons.css">
+  <link rel="stylesheet" href="css/character.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322C55E' stroke-width='2'%3E%3Cpath d='M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.9-4-4-6.5c-.5-2.5 1-5.5 1-5.5s1.5 3 1 5.5c-.1 2.5-1.7 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z'/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <!-- Lucide Icons sprite (https://lucide.dev) -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+    <defs>
+      <symbol id="icon-droplet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.9-4-4-6.5c-.5-2.5 1-5.5 1-5.5s1.5 3 1 5.5c-.1 2.5-1.7 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></symbol>
+      <symbol id="icon-map-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+      <symbol id="icon-circle-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+      <symbol id="icon-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></symbol>
+      <symbol id="icon-message-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+      <symbol id="icon-clipboard-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></symbol>
+      <symbol id="icon-drone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 10v2"/><path d="M12 2v2"/><path d="m4.93 10.93 1.41 1.41"/><path d="M2 8h3"/><path d="M2 16h3"/><path d="m19.07 10.93-1.41 1.41"/><path d="M19 8h3"/><path d="M19 16h3"/><path d="m10.59 13.41 1.41 1.41"/><path d="M8 13h3"/><path d="M8 17h3"/><path d="m13.41 10.59-1.41 1.41"/><path d="M13 7h3"/><path d="M13 3h3"/></symbol>
+      <symbol id="icon-file-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></symbol>
+      <symbol id="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+      <symbol id="icon-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></symbol>
+      <symbol id="icon-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+      <symbol id="icon-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></symbol>
+      <symbol id="icon-sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></symbol>
+      <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+      <symbol id="icon-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="page-grain" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#" class="logo">
+        <span class="logo__icon" aria-hidden="true">
+          <svg class="icon icon--sm icon--accent" aria-hidden="true"><use href="#icon-droplet"/></svg>
+        </span>
+        AquaField · BY
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Основная навигация">
+        <ul class="nav__list">
+          <li><a href="#services" class="nav__link">Услуги</a></li>
+          <li><a href="#process" class="nav__link">Процесс</a></li>
+          <li><a href="#drone" class="nav__link">Дрон</a></li>
+          <li><a href="#pricing" class="nav__link">Цены</a></li>
+          <li><a href="#contact" class="nav__link">Канал</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <div class="dropdown" id="contactDropdown">
+          <button class="btn btn--outline btn--sm dropdown__toggle" aria-expanded="false" aria-haspopup="true">
+            Связаться <svg class="icon icon--sm" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+          </button>
+          <div class="dropdown__menu" role="menu">
+            <a href="#contact" class="dropdown__item" role="menuitem"><svg class="icon icon--sm" aria-hidden="true"><use href="#icon-phone"/></svg> +375 (XX) XXX-XX-XX</a>
+            <a href="#contact" class="dropdown__item" role="menuitem"><svg class="icon icon--sm" aria-hidden="true"><use href="#icon-send"/></svg> @ваш_бот</a>
+            <a href="#contact" class="dropdown__item" role="menuitem"><svg class="icon icon--sm" aria-hidden="true"><use href="#icon-users"/></svg> @ваш_канал</a>
+          </div>
+        </div>
+
+        <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <nav aria-label="Мобильная навигация">
+        <a href="#services" class="mobile-menu__link">Услуги</a>
+        <a href="#process" class="mobile-menu__link">Процесс</a>
+        <a href="#drone" class="mobile-menu__link">Дрон</a>
+        <a href="#pricing" class="mobile-menu__link">Цены</a>
+        <a href="#contact" class="mobile-menu__link">Канал</a>
+        <hr>
+        <a href="#contact" class="mobile-menu__link"><svg class="icon icon--sm" aria-hidden="true"><use href="#icon-phone"/></svg> +375 (XX) XXX-XX-XX</a>
+        <a href="#contact" class="mobile-menu__link"><svg class="icon icon--sm" aria-hidden="true"><use href="#icon-send"/></svg> @ваш_бот</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="hero__atmosphere" aria-hidden="true">
+        <div class="hero__blob hero__blob--1"></div>
+        <div class="hero__blob hero__blob--2"></div>
+        <div class="hero__blob hero__blob--3"></div>
+        <svg class="hero__contours" viewBox="0 0 1200 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,280 C200,220 400,320 600,260 C800,200 1000,300 1200,240 L1200,400 L0,400 Z" fill="none" stroke="currentColor" stroke-width="1"/>
+          <path d="M0,320 C250,260 450,360 700,300 C900,250 1050,340 1200,290" fill="none" stroke="currentColor" stroke-width="0.75" opacity="0.6"/>
+          <path d="M0,360 C300,300 500,380 800,330 C950,300 1100,370 1200,340" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="container">
+        <div class="hero__content reveal">
+          <span class="hero__label">• Агрополив с воздуха · Беларусь</span>
+          <h1 class="hero__title">Вода попадает туда,<br>куда <em>трактор не&nbsp;доедет</em></h1>
+          <p class="hero__subtitle">
+            Дрон с баком 50&nbsp;литров увлажняет каждый метр по GPS-маршруту.<br>
+            <strong>Приезжаем сами. Платите после полива — без предоплаты.</strong>
+          </p>
+          <div class="hero__cta">
+            <a href="#contact" class="btn btn--primary">
+              Заказать полив <svg class="icon icon--sm" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+            </a>
+            <a href="#contact" class="btn btn--outline">
+              Узнать подробнее
+            </a>
+          </div>
+        </div>
+
+        <div class="hero__visual reveal">
+          <div class="hero__decor hero__decor--tl" aria-hidden="true">+</div>
+          <div class="hero__decor hero__decor--tr" aria-hidden="true">+</div>
+          <div class="hero__decor hero__decor--bl" aria-hidden="true">+</div>
+          <div class="hero__image-wrap">
+            <img src="assets/images/hero-drone.jpg" alt="Беспилотник на фоне сельхозполя" class="hero__image" width="1400" height="933" loading="eager">
+          </div>
+          <div class="hero__float hero__float--left">
+            <div class="hero__badge">50 л <span>за один вылет</span></div>
+            <div class="hero__badge">45 BYN/га <span>фиксированный тариф</span></div>
+            <div class="hero__badge">До 80 га/день <span>за рабочую смену</span></div>
+          </div>
+          <div class="hero__float hero__float--right">
+            <div class="hero__stat-card">
+              <span class="hero__stat-icon" aria-hidden="true"><svg class="icon"><use href="#icon-droplet"/></svg></span>
+              <div>
+                <strong>до 30%</strong>
+                <span>меньше воды уходит вперёд, чем при заливе из шланга</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span class="marquee__item"><svg class="icon icon--xs icon--accent" aria-hidden="true"><use href="#icon-sparkle"/></svg> Каждый метр под контролем</span>
+        <span class="marquee__item"><svg class="icon icon--xs icon--accent" aria-hidden="true"><use href="#icon-sparkle"/></svg> 50 литров за вылет</span>
+        <span class="marquee__item"><svg class="icon icon--xs icon--accent" aria-hidden="true"><use href="#icon-sparkle"/></svg> Без колей на поле</span>
+        <span class="marquee__item"><svg class="icon icon--xs icon--accent" aria-hidden="true"><use href="#icon-sparkle"/></svg> Любой район Беларуси</span>
+        <span class="marquee__item"><svg class="icon icon--xs icon--accent" aria-hidden="true"><use href="#icon-sparkle"/></svg> Оплата после полива</span>
+        <span class="marquee__item"><svg class="icon icon--xs icon--accent" aria-hidden="true"><use href="#icon-sparkle"/></svg> До 80 га за смену</span>
+        <span class="marquee__item"><svg class="icon icon--xs icon--accent" aria-hidden="true"><use href="#icon-sparkle"/></svg> Меньше воды — больше отдачи</span>
+        <span class="marquee__item"><svg class="icon icon--xs icon--accent" aria-hidden="true"><use href="#icon-sparkle"/></svg> RTK-точность маршрута</span>
+        <span class="marquee__item"><svg class="icon icon--xs icon--accent" aria-hidden="true"><use href="#icon-sparkle"/></svg> Каждый метр под контролем</span>
+        <span class="marquee__item"><svg class="icon icon--xs icon--accent" aria-hidden="true"><use href="#icon-sparkle"/></svg> 50 литров за вылет</span>
+        <span class="marquee__item"><svg class="icon icon--xs icon--accent" aria-hidden="true"><use href="#icon-sparkle"/></svg> Без колей на поле</span>
+        <span class="marquee__item"><svg class="icon icon--xs icon--accent" aria-hidden="true"><use href="#icon-sparkle"/></svg> Любой район Беларуси</span>
+        <span class="marquee__item"><svg class="icon icon--xs icon--accent" aria-hidden="true"><use href="#icon-sparkle"/></svg> Оплата после полива</span>
+        <span class="marquee__item"><svg class="icon icon--xs icon--accent" aria-hidden="true"><use href="#icon-sparkle"/></svg> До 80 га за смену</span>
+        <span class="marquee__item"><svg class="icon icon--xs icon--accent" aria-hidden="true"><use href="#icon-sparkle"/></svg> Меньше воды — больше отдачи</span>
+        <span class="marquee__item"><svg class="icon icon--xs icon--accent" aria-hidden="true"><use href="#icon-sparkle"/></svg> RTK-точность маршрута</span>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <section class="stats" aria-label="Ключевые показатели">
+      <div class="container">
+        <div class="stats__grid reveal">
+          <div class="stats__item">
+            <span class="stats__value">50 л</span>
+            <span class="stats__label">За один вылет</span>
+          </div>
+          <div class="stats__item">
+            <span class="stats__value">45 BYN</span>
+            <span class="stats__label">Стоимость гектара</span>
+          </div>
+          <div class="stats__item">
+            <span class="stats__value">80+ га</span>
+            <span class="stats__label">За рабочий день</span>
+          </div>
+          <div class="stats__item">
+            <span class="stats__value">100%</span>
+            <span class="stats__label">Покрытие по карте</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission -->
+    <section class="mission" id="about">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Зачем с воздуха</span>
+          <h2 class="section-title">Поле не знает,<br><em>где проходит</em><br>ваша борозда</h2>
+        </div>
+
+        <div class="mission__grid">
+          <div class="mission__visual reveal">
+            <span class="mission__year" aria-hidden="true">2026</span>
+            <div class="mission__tags">
+              <span class="tag">Меньше расход воды</span>
+              <span class="tag">Полив по зонам</span>
+              <span class="tag">Без уплотнения почвы</span>
+            </div>
+          </div>
+          <div class="mission__text reveal">
+            <p>Когда земля пересыхает, счёт идёт на часы. Наземная техника давит колею, срезает углы, не заезжает на ягодник после дождя. Дрон проходит над культурой — без следа на почве и без пропусков в рядах.</p>
+            <p>Мы выезжаем по всей Беларуси: привозим технику, строим маршрут по вашей карте, поливаем ровно там, где не хватает влаги. От вас — вода на участке. От нас — бригада в поле и подписанный акт.</p>
+          </div>
+        </div>
+
+        <div class="highlights reveal">
+          <div class="highlight-card">
+            <span class="highlight-card__icon" aria-hidden="true"><svg class="icon"><use href="#icon-droplet"/></svg></span>
+            <div>
+              <strong>50 л</strong>
+              <span>объём одного вылета</span>
+            </div>
+          </div>
+          <div class="highlight-card">
+            <span class="highlight-card__icon" aria-hidden="true"><svg class="icon"><use href="#icon-map-pin"/></svg></span>
+            <div>
+              <strong>Вся страна</strong>
+              <span>выезжаем в любой район</span>
+            </div>
+          </div>
+          <div class="highlight-card">
+            <span class="highlight-card__icon" aria-hidden="true"><svg class="icon"><use href="#icon-circle-check"/></svg></span>
+            <div>
+              <strong>После работы</strong>
+              <span>расчёт по акту, не до</span>
+            </div>
+          </div>
+          <div class="highlight-card">
+            <span class="highlight-card__icon" aria-hidden="true"><svg class="icon"><use href="#icon-award"/></svg></span>
+            <div>
+              <strong>Лицензия БЛА</strong>
+              <span>легальный полёт с разрешением</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Что делаем</span>
+          <h2 class="section-title">Три задачи — один дрон</h2>
+          <p class="section-desc">Берём на себя полёт, маршрут и отчётность. Вы получаете увлажнённое поле.</p>
+        </div>
+
+        <div class="services__grid">
+          <article class="service-card reveal">
+            <span class="service-card__num">01</span>
+            <h3 class="service-card__title">Полив <em>открытых полей</em></h3>
+            <p class="service-card__desc">Равномерная подача воды и растворов над пашней. До 80 гектаров за день — маршрут строго по карте, без сноса на соседние культуры и без колей на почве.</p>
+            <div class="service-card__tags">
+              <span class="pill">Зерновые</span>
+              <span class="pill">Масличные</span>
+              <span class="pill">Кукуруза</span>
+              <span class="pill">Корнеплоды</span>
+            </div>
+            <span class="service-card__arrow" aria-hidden="true"><svg class="icon"><use href="#icon-arrow-right"/></svg></span>
+          </article>
+
+          <article class="service-card reveal">
+            <span class="service-card__num">02</span>
+            <h3 class="service-card__title">Полив <em>по зонам влаги</em></h3>
+            <p class="service-card__desc">Смотрим на участок и даём больше воды туда, где земля уже сохнет. Не переливаете здоровые делянки — экономите ресурс и время на каждом гектаре.</p>
+            <div class="service-card__tags">
+              <span class="pill">Карты увлажнения</span>
+              <span class="pill">Зонирование</span>
+              <span class="pill">Отчёт агроному</span>
+            </div>
+            <span class="service-card__arrow" aria-hidden="true"><svg class="icon"><use href="#icon-arrow-right"/></svg></span>
+          </article>
+
+          <article class="service-card reveal">
+            <span class="service-card__num">03</span>
+            <h3 class="service-card__title">Сады <em>и ягодники</em></h3>
+            <p class="service-card__desc">На склонах, между рядами и на мягкой почве после дождя — там, где колёса оставляют след. Дрон идёт на высоте, крона и корневая зона получают равномерную влагу.</p>
+            <div class="service-card__tags">
+              <span class="pill">Ягодники</span>
+              <span class="pill">Сады</span>
+              <span class="pill">Крутые склоны</span>
+            </div>
+            <span class="service-card__arrow" aria-hidden="true"><svg class="icon"><use href="#icon-arrow-right"/></svg></span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="process" id="process">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Как устроена работа</span>
+          <h2 class="section-title">От звонка до мокрой почвы</h2>
+          <p class="section-desc">Простая схема — без сюрпризов и лишних звонков</p>
+        </div>
+
+        <div class="process__grid">
+          <div class="process-step reveal">
+            <span class="process-step__num">1</span>
+            <span class="process-step__icon" aria-hidden="true"><svg class="icon"><use href="#icon-message-circle"/></svg></span>
+            <h3 class="process-step__title">Связываетесь с нами</h3>
+            <p>Называете площадь, культуру и когда нужен полив. Отвечаем в течение часа — сразу говорим, реально ли уложиться в ваши сроки.</p>
+          </div>
+          <div class="process-step reveal">
+            <span class="process-step__num">2</span>
+            <span class="process-step__icon" aria-hidden="true"><svg class="icon"><use href="#icon-clipboard-list"/></svg></span>
+            <h3 class="process-step__title">Готовим полёт</h3>
+            <p>Загружаем контур вашего поля, согласуем маршрут с вами и оформляем разрешение на использование воздушного пространства.</p>
+          </div>
+          <div class="process-step reveal">
+            <span class="process-step__num">3</span>
+            <span class="process-step__icon" aria-hidden="true"><svg class="icon"><use href="#icon-drone"/></svg></span>
+            <h3 class="process-step__title">Летим и поливаем</h3>
+            <p>Бригада приезжает с дроном и оператором. Полёт идёт строго по плану — вы видите работу на месте или получаете отчёт по маршруту.</p>
+          </div>
+          <div class="process-step reveal">
+            <span class="process-step__num">4</span>
+            <span class="process-step__icon" aria-hidden="true"><svg class="icon"><use href="#icon-file-check"/></svg></span>
+            <h3 class="process-step__title">Закрываем работу</h3>
+            <p>Подписываем акт выполненных работ. Оплата — в течение 15 дней после него, когда вы уже видели результат в поле.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Drone -->
+    <section class="drone-section" id="drone">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Наша машина</span>
+          <h2 class="section-title">Бак на 50 литров</h2>
+          <p class="section-desc">Рабочая лошадка для больших площадей и плотного графика в сезон</p>
+        </div>
+
+        <div class="drone-card reveal">
+          <div class="drone-card__image">
+            <img src="assets/images/drone-close.jpg" alt="Агродрон с баком для полива" width="900" height="600" loading="lazy">
+            <span class="drone-card__capacity">50 л</span>
+          </div>
+          <div class="drone-card__content">
+            <h3 class="drone-card__name">AquaField Rainmaker 50</h3>
+            <p class="drone-card__desc">Беспилотник с баком 50 литров, RTK-навигацией и автоматическим маршрутом. Летит сам, льёт равномерно, не оставляет колей. Рассчитан на ежедневную работу в поле — от рассвета до сумерек.</p>
+
+            <div class="drone-card__specs">
+              <div class="spec">
+                <span class="spec__label">Ёмкость бака</span>
+                <span class="spec__value">50 л</span>
+              </div>
+              <div class="spec">
+                <span class="spec__label">Ширина захвата</span>
+                <span class="spec__value">до 8 м</span>
+              </div>
+              <div class="spec">
+                <span class="spec__label">Производительность</span>
+                <span class="spec__value">до 80 га/день</span>
+              </div>
+              <div class="spec">
+                <span class="spec__label">Точность GPS</span>
+                <span class="spec__value">RTK ±2 см</span>
+              </div>
+            </div>
+
+            <div class="drone-card__metrics">
+              <div class="metric">
+                <span class="metric__value">89%</span>
+                <span class="metric__label">Равномерность полива</span>
+              </div>
+              <div class="metric">
+                <span class="metric__value">50 л</span>
+                <span class="metric__label">За вылет</span>
+              </div>
+              <div class="metric">
+                <span class="metric__value">45 BYN</span>
+                <span class="metric__label">Тариф за га</span>
+              </div>
+              <div class="metric">
+                <span class="metric__value">RTK</span>
+                <span class="metric__label">Точность маршрута</span>
+              </div>
+            </div>
+
+            <div class="drone-card__tags">
+              <span class="pill">Автомаршрут</span>
+              <span class="pill">Равномерный распыл</span>
+              <span class="pill">Импорт контура поля</span>
+              <span class="pill">Работа в сумерки</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery reveal">
+          <img src="assets/images/field-rows.jpg" alt="Зелёные ряды на поле" class="gallery__img" loading="lazy">
+          <img src="assets/images/irrigation.jpg" alt="Оросительная система на плантации" class="gallery__img" loading="lazy">
+          <img src="assets/images/garden.jpg" alt="Садовые культуры в теплице" class="gallery__img" loading="lazy">
+          <img src="assets/images/field-aerial.jpg" alt="Вид на поле с высоты" class="gallery__img" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- Advantages -->
+    <section class="advantages" id="advantages">
+      <div class="container">
+        <div class="advantages__header reveal">
+          <div>
+            <span class="section-label">На что опираемся</span>
+            <h2 class="section-title">Честная работа<br><em>на вашей земле</em></h2>
+            <p class="section-desc">Отвечаем за каждый вылет: маршрут сохраняется, покрытие можно проверить, документы — в порядке.</p>
+          </div>
+          <a href="#contact" class="btn btn--primary">
+            Обсудить участок <svg class="icon icon--sm" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+          </a>
+        </div>
+
+        <div class="advantages__grid">
+          <div class="advantage-card reveal">
+            <span class="advantage-card__num">01</span>
+            <h3>Пилоты с допуском</h3>
+            <p>Внешние пилоты БЛА с действующими свидетельствами. Каждый полёт — с официальным разрешением на воздушное пространство, без «серых» схем.</p>
+          </div>
+          <div class="advantage-card reveal">
+            <span class="advantage-card__num">02</span>
+            <h3>Платите после полива</h3>
+            <p>Сначала договор, потом работа в поле, потом акт. Никаких авансов — вы видите увлажнённую почву до того, как переводите деньги.</p>
+          </div>
+          <div class="advantage-card reveal">
+            <span class="advantage-card__num">03</span>
+            <h3>Сами приезжаем</h3>
+            <p>Везём дрон, пульт и оператора. На участке от вас нужна только вода — остальное оборудование и логистика на нашей стороне.</p>
+          </div>
+          <div class="advantage-card reveal">
+            <span class="advantage-card__num">04</span>
+            <h3>Техника под задачу</h3>
+            <p>GPS RTK с точностью до сантиметров: дрон не «примерно» летит над полем, а повторяет маршрут метр в метр — без пропусков и наложений.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+      <div class="container">
+        <div class="pricing-card reveal">
+          <div class="pricing-card__content">
+            <span class="section-label">Тариф</span>
+            <h2 class="pricing-card__price">
+              <span class="pricing-card__amount">45 BYN</span>
+              <span class="pricing-card__unit">за 1 гектар полива</span>
+            </h2>
+            <p class="pricing-card__desc">В цену входит выезд бригады, работа оператора, построение маршрута и сам полёт. Без скрытых доплат за километраж внутри региона.</p>
+            <ul class="pricing-card__includes">
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#icon-check"/></svg> Маршрут по контуру вашего поля</li>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#icon-check"/></svg> Дрон с баком 50 литров</li>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#icon-check"/></svg> Акт с указанием обработанной площади</li>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#icon-check"/></svg> Оплата в течение 15 дней после акта</li>
+            </ul>
+            <p class="pricing-card__note">Минимальный объём — от 10 га за один выезд</p>
+            <a href="#contact" class="btn btn--primary btn--lg">
+              Просчитать мой участок <svg class="icon icon--sm" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+            </a>
+          </div>
+          <div class="pricing-card__visual">
+            <div class="pricing-card__highlight">
+              <span class="pricing-card__highlight-value">50 л</span>
+              <span class="pricing-card__highlight-label">воды за один вылет</span>
+            </div>
+            <div class="pricing-card__highlight pricing-card__highlight--dark">
+              <span class="pricing-card__highlight-value">80+</span>
+              <span class="pricing-card__highlight-label">гектаров за смену</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-section" id="contact">
+      <div class="container">
+        <div class="cta-box reveal">
+          <span class="section-label">Пора поливать</span>
+          <h2 class="cta-box__title">Расскажите о своём поле — подберём окно для вылета</h2>
+          <p class="cta-box__desc">Напишите площадь, культуру и когда нужна влага. Ответим в течение часа, назовём срок выезда и сориентируем по стоимости.</p>
+          <div class="cta-box__buttons">
+            <a href="#contact" class="btn btn--primary btn--lg">
+              Оставить заявку
+            </a>
+            <a href="#contact" class="btn btn--outline btn--lg">
+              Написать в мессенджер <svg class="icon icon--sm" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+            </a>
+          </div>
+          <div class="contact-placeholders">
+            <p><svg class="icon icon--sm" aria-hidden="true"><use href="#icon-phone"/></svg> <a href="#contact">+375 (XX) XXX-XX-XX</a></p>
+            <p><svg class="icon icon--sm" aria-hidden="true"><use href="#icon-send"/></svg> Telegram-бот: <a href="#contact">@ваш_бот</a></p>
+            <p><svg class="icon icon--sm" aria-hidden="true"><use href="#icon-users"/></svg> Telegram-канал: <a href="#contact">@ваш_канал</a></p>
+            <p><svg class="icon icon--sm" aria-hidden="true"><use href="#icon-instagram"/></svg> Instagram: <a href="#contact">@ваш_аккаунт</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="#" class="logo logo--footer">AquaField · BY</a>
+          <p>Беспилотный полив полей по всей Беларуси. Приезжаем с техникой, поливаем по карте, закрываем работу актом. Платите — когда видите результат.</p>
+          <div class="footer__social">
+            <a href="#contact">@ваш_бот</a>
+            <a href="#contact">@ваш_канал</a>
+            <a href="#contact">@ваш_аккаунт</a>
+          </div>
+        </div>
+
+        <div class="footer__col">
+          <h4>Услуги</h4>
+          <a href="#services">Открытые поля</a>
+          <a href="#services">Полив по зонам</a>
+          <a href="#services">Сады и ягодники</a>
+        </div>
+
+        <div class="footer__col">
+          <h4>Компания</h4>
+          <a href="#process">Как устроена работа</a>
+          <a href="#about">Зачем с воздуха</a>
+          <a href="#contact">Канал</a>
+        </div>
+
+        <div class="footer__col">
+          <h4>Связаться</h4>
+          <a href="#contact">@ваш_бот</a>
+          <a href="#contact">@ваш_канал</a>
+          <a href="#contact">@ваш_аккаунт</a>
+          <a href="#contact">+375 (XX) XXX-XX-XX</a>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span>© 2026 AquaField · BY</span>
+        <span>Беларусь</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
