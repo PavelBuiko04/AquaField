@@ -137,22 +137,9 @@
   height: 22px;
 }
 
-.process-step__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  margin: 0 auto 12px;
-  border-radius: 16px;
-  background: var(--accent-bg);
-  color: var(--accent);
-  font-size: 0;
-}
-
-.process-step__icon .icon {
-  width: 26px;
-  height: 26px;
+.process-card__icon .icon {
+  width: 20px;
+  height: 20px;
 }
 
 .service-card__arrow .icon {
