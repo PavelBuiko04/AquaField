@@ -29,7 +29,6 @@
       setMobileNavOpen(false);
     }
 
-    // Burger menu
     if (burger && mobileNav) {
       burger.addEventListener('click', function (e) {
         e.preventDefault();
@@ -54,7 +53,6 @@
       });
     }
 
-    // Active nav + scroll
     const sections = document.querySelectorAll('section[id]');
 
     function updateActiveNav() {
@@ -91,7 +89,6 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    // Contact dropdown
     if (contactDropdown) {
       const toggle = contactDropdown.querySelector('.dropdown__toggle');
 
@@ -109,7 +106,6 @@
       }
     }
 
-    // Smooth scroll for anchor links
     navLinks.forEach(function (link) {
       link.addEventListener('click', function (e) {
         const href = link.getAttribute('href');
@@ -123,21 +119,13 @@
       });
     });
 
-    // Image fallback to local SVG placeholders
     const fallbackMap = {
       'hero-bg.jpg': 'assets/images/hero-drone.jpg',
       'hero-drone.jpg': 'assets/images/hero-placeholder.svg',
-      'hero-field-drone.jpg': 'assets/images/drone-spray.jpg',
-      'drone-spray.jpg': 'assets/images/field-placeholder.svg',
-      'drone-close.jpg': 'assets/images/drone-placeholder.svg',
-      'field-rows.jpg': 'assets/images/field-placeholder.svg',
-      'irrigation.jpg': 'assets/images/field-placeholder.svg',
-      'garden.jpg': 'assets/images/field-placeholder.svg',
-      'field-aerial.jpg': 'assets/images/field-placeholder.svg',
       'field-green.jpg': 'assets/images/field-placeholder.svg',
       'field-wheat.jpg': 'assets/images/field-placeholder.svg',
-      'hero-landscape.jpg': 'assets/images/field-placeholder.svg',
-      'farm.jpg': 'assets/images/field-placeholder.svg'
+      'field-hills.jpg': 'assets/images/field-placeholder.svg',
+      'hero-landscape.jpg': 'assets/images/field-placeholder.svg'
     };
 
     document.querySelectorAll('img').forEach(function (img) {

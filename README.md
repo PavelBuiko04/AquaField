@@ -5,7 +5,7 @@ Landing page for an agricultural drone irrigation service in Belarus.
 
 **[View live site →](https://pavelbuiko04.github.io/AquaField/)**
 
-![Hero](assets/images/hero-bg.jpg)
+[![AquaField · BY — landing page preview](assets/preview.png)](https://pavelbuiko04.github.io/AquaField/)
 
 ---
 
@@ -61,7 +61,8 @@ dron/
 ├── js/
 │   └── main.js         # interactivity
 └── assets/
-    └── images/         # photos and SVG placeholders
+    ├── preview.png       # README screenshot
+    └── images/           # photos and SVG placeholders
 ```
 
 ---

@@ -12,21 +12,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800;1,9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=14">
-  <link rel="stylesheet" href="css/icons.css?v=12">
-  <link rel="stylesheet" href="css/character.css?v=14">
+  <link rel="stylesheet" href="css/styles.css?v=15">
+  <link rel="stylesheet" href="css/icons.css?v=15">
+  <link rel="stylesheet" href="css/character.css?v=15">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322C55E' stroke-width='2'%3E%3Cpath d='M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.9-4-4-6.5c-.5-2.5 1-5.5 1-5.5s1.5 3 1 5.5c-.1 2.5-1.7 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z'/%3E%3C/svg%3E">
 </head>
 <body>
 
-  <!-- Lucide Icons sprite (https://lucide.dev) -->
   <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
     <defs>
       <symbol id="icon-droplet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.9-4-4-6.5c-.5-2.5 1-5.5 1-5.5s1.5 3 1 5.5c-.1 2.5-1.7 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></symbol>
-      <symbol id="icon-map-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
-      <symbol id="icon-circle-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
-      <symbol id="icon-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></symbol>
-      <symbol id="icon-message-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
       <symbol id="icon-clipboard-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></symbol>
       <symbol id="icon-drone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 10v2"/><path d="M12 2v2"/><path d="m4.93 10.93 1.41 1.41"/><path d="M2 8h3"/><path d="M2 16h3"/><path d="m19.07 10.93-1.41 1.41"/><path d="M19 8h3"/><path d="M19 16h3"/><path d="m10.59 13.41 1.41 1.41"/><path d="M8 13h3"/><path d="M8 17h3"/><path d="m13.41 10.59-1.41 1.41"/><path d="M13 7h3"/><path d="M13 3h3"/></symbol>
       <symbol id="icon-file-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></symbol>
@@ -46,7 +41,6 @@
 
   <div class="page-grain" aria-hidden="true"></div>
 
-  <!-- Header -->
   <header class="header" id="header">
     <div class="container header__inner">
       <a href="#" class="logo">
@@ -89,7 +83,6 @@
 
   <main>
 
-    <!-- Hero -->
     <section class="hero" id="hero">
       <div class="hero__bg" aria-hidden="true">
         <img
@@ -104,7 +97,7 @@
         <div class="hero__scrim"></div>
       </div>
       <div class="container">
-        <div class="hero__content reveal">
+        <div class="hero__content">
           <span class="hero__label">• Агрополив с воздуха · Беларусь</span>
           <h1 class="hero__title">Вода попадает туда,<br>куда <em>трактор не&nbsp;доедет</em></h1>
           <p class="hero__subtitle">
@@ -123,7 +116,6 @@
       </div>
     </section>
 
-    <!-- Marquee -->
     <div class="marquee" aria-hidden="true">
       <div class="marquee__track">
         <span class="marquee__item"><svg class="icon icon--xs icon--accent" aria-hidden="true"><use href="#icon-sparkle"/></svg> Каждый метр под контролем</span>
@@ -145,10 +137,9 @@
       </div>
     </div>
 
-    <!-- Stats -->
     <section class="stats" aria-label="Ключевые показатели">
       <div class="container">
-        <div class="stats__grid reveal">
+        <div class="stats__grid">
           <div class="stats__item">
             <span class="stats__value">50 л</span>
             <span class="stats__label">За один вылет</span>
@@ -169,16 +160,15 @@
       </div>
     </section>
 
-    <!-- Mission -->
     <section class="mission" id="about">
       <div class="container">
-        <div class="section-header reveal">
+        <div class="section-header">
           <span class="section-label">Зачем с воздуха</span>
           <h2 class="section-title">Поле не знает,<br><em>где проходит</em><br>ваша борозда</h2>
         </div>
 
         <div class="mission__grid">
-          <div class="mission__visual reveal">
+          <div class="mission__visual">
             <span class="mission__year" aria-hidden="true">2026</span>
             <div class="mission__tags">
               <span class="tag">Меньше расход воды</span>
@@ -186,13 +176,13 @@
               <span class="tag">Без уплотнения почвы</span>
             </div>
           </div>
-          <div class="mission__text reveal">
+          <div class="mission__text">
             <p>Когда земля пересыхает, счёт идёт на часы. Наземная техника давит колею, срезает углы, не заезжает на ягодник после дождя. Дрон проходит над культурой — без следа на почве и без пропусков в рядах.</p>
             <p>Мы выезжаем по всей Беларуси: привозим технику, строим маршрут по вашей карте, поливаем ровно там, где не хватает влаги. От вас — вода на участке. От нас — бригада в поле и подписанный акт.</p>
           </div>
         </div>
 
-        <div class="highlights reveal">
+        <div class="highlights">
           <div class="highlight-card">
             <span class="highlight-card__icon" aria-hidden="true"><svg class="icon"><use href="#icon-cylinder"/></svg></span>
             <div>
@@ -225,17 +215,16 @@
       </div>
     </section>
 
-    <!-- Services -->
     <section class="services" id="services">
       <div class="container">
-        <div class="section-header reveal">
+        <div class="section-header">
           <span class="section-label">Что делаем</span>
           <h2 class="section-title">Три задачи — один дрон</h2>
           <p class="section-desc">Берём на себя полёт, маршрут и отчётность. Вы получаете увлажнённое поле.</p>
         </div>
 
         <div class="services__grid">
-          <article class="service-card reveal">
+          <article class="service-card">
             <span class="service-card__num">01</span>
             <h3 class="service-card__title">Полив <em>открытых полей</em></h3>
             <p class="service-card__desc">Равномерная подача воды и растворов над пашней. До 80 гектаров за день — маршрут строго по карте, без сноса на соседние культуры и без колей на почве.</p>
@@ -248,7 +237,7 @@
             <span class="service-card__arrow" aria-hidden="true"><svg class="icon"><use href="#icon-arrow-right"/></svg></span>
           </article>
 
-          <article class="service-card reveal">
+          <article class="service-card">
             <span class="service-card__num">02</span>
             <h3 class="service-card__title">Полив <em>по зонам влаги</em></h3>
             <p class="service-card__desc">Смотрим на участок и даём больше воды туда, где земля уже сохнет. Не переливаете здоровые делянки — экономите ресурс и время на каждом гектаре.</p>
@@ -260,7 +249,7 @@
             <span class="service-card__arrow" aria-hidden="true"><svg class="icon"><use href="#icon-arrow-right"/></svg></span>
           </article>
 
-          <article class="service-card reveal">
+          <article class="service-card">
             <span class="service-card__num">03</span>
             <h3 class="service-card__title">Сады <em>и ягодники</em></h3>
             <p class="service-card__desc">На склонах, между рядами и на мягкой почве после дождя — там, где колёса оставляют след. Дрон идёт на высоте, крона и корневая зона получают равномерную влагу.</p>
@@ -275,10 +264,9 @@
       </div>
     </section>
 
-    <!-- Process -->
     <section class="process" id="process">
       <div class="container">
-        <div class="section-header section-header--center reveal">
+        <div class="section-header section-header--center">
           <span class="section-label">Как устроена работа</span>
           <h2 class="section-title">От звонка до мокрой почвы</h2>
           <p class="section-desc">Простая схема — без сюрпризов и лишних звонков</p>
@@ -286,7 +274,7 @@
 
         <div class="process__layout">
           <div class="process-bento">
-          <article class="process-card process-card--hero reveal">
+          <article class="process-card process-card--hero">
             <img
               class="process-card__bg"
               src="assets/images/field-green.jpg"
@@ -314,7 +302,7 @@
             </div>
           </article>
 
-          <article class="process-card process-card--info reveal">
+          <article class="process-card process-card--info">
             <span class="process-card__icon" aria-hidden="true">
               <svg class="icon"><use href="#icon-clipboard-list"/></svg>
             </span>
@@ -323,7 +311,7 @@
             <p>Загружаем контур поля, согласуем маршрут и оформляем разрешение на использование воздушного пространства.</p>
           </article>
 
-          <article class="process-card process-card--info reveal">
+          <article class="process-card process-card--info">
             <span class="process-card__icon" aria-hidden="true">
               <svg class="icon"><use href="#icon-drone"/></svg>
             </span>
@@ -332,7 +320,7 @@
             <p>Бригада приезжает с дроном и оператором. Полёт строго по плану — вы видите работу на месте или получаете отчёт.</p>
           </article>
 
-          <article class="process-card process-card--info process-card--wide reveal">
+          <article class="process-card process-card--info process-card--wide">
             <span class="process-card__icon" aria-hidden="true">
               <svg class="icon"><use href="#icon-file-check"/></svg>
             </span>
@@ -347,16 +335,15 @@
       </div>
     </section>
 
-    <!-- Drone -->
     <section class="drone-section" id="drone">
       <div class="container">
-        <div class="section-header reveal">
+        <div class="section-header">
           <span class="section-label">Наша машина</span>
           <h2 class="section-title">Бак на 50 литров</h2>
           <p class="section-desc">Рабочая лошадка для больших площадей и плотного графика в сезон</p>
         </div>
 
-        <div class="drone-card reveal">
+        <div class="drone-card">
           <div class="drone-card__media">
             <img src="assets/images/hero-drone.jpg" alt="Агродрон AquaField Rainmaker 50 над полем" width="1400" height="933" loading="lazy">
             <div class="drone-card__media-overlay" aria-hidden="true"></div>
@@ -413,7 +400,7 @@
           </div>
         </div>
 
-        <div class="gallery reveal">
+        <div class="gallery">
           <img src="assets/images/field-wheat.jpg" alt="Золотое пшеничное поле на закате" class="gallery__img" loading="lazy">
           <img src="assets/images/field-green.jpg" alt="Ряды молодой кукурузы на поле" class="gallery__img" loading="lazy">
           <img src="assets/images/field-hills.jpg" alt="Зелёные поля на холмах" class="gallery__img" loading="lazy">
@@ -422,10 +409,9 @@
       </div>
     </section>
 
-    <!-- Advantages -->
     <section class="advantages" id="advantages">
       <div class="container">
-        <div class="advantages__header reveal">
+        <div class="advantages__header">
           <div>
             <span class="section-label">На что опираемся</span>
             <h2 class="section-title">Честная работа<br><em>на вашей земле</em></h2>
@@ -437,22 +423,22 @@
         </div>
 
         <div class="advantages__grid">
-          <div class="advantage-card reveal">
+          <div class="advantage-card">
             <span class="advantage-card__num">01</span>
             <h3>Пилоты с допуском</h3>
             <p>Внешние пилоты БЛА с действующими свидетельствами. Каждый полёт — с официальным разрешением на воздушное пространство, без «серых» схем.</p>
           </div>
-          <div class="advantage-card reveal">
+          <div class="advantage-card">
             <span class="advantage-card__num">02</span>
             <h3>Платите после полива</h3>
             <p>Сначала договор, потом работа в поле, потом акт. Никаких авансов — вы видите увлажнённую почву до того, как переводите деньги.</p>
           </div>
-          <div class="advantage-card reveal">
+          <div class="advantage-card">
             <span class="advantage-card__num">03</span>
             <h3>Сами приезжаем</h3>
             <p>Везём дрон, пульт и оператора. На участке от вас нужна только вода — остальное оборудование и логистика на нашей стороне.</p>
           </div>
-          <div class="advantage-card reveal">
+          <div class="advantage-card">
             <span class="advantage-card__num">04</span>
             <h3>Техника под задачу</h3>
             <p>GPS RTK с точностью до сантиметров: дрон не «примерно» летит над полем, а повторяет маршрут метр в метр — без пропусков и наложений.</p>
@@ -461,10 +447,9 @@
       </div>
     </section>
 
-    <!-- Pricing -->
     <section class="pricing" id="pricing">
       <div class="container">
-        <div class="pricing-card reveal">
+        <div class="pricing-card">
           <div class="pricing-card__content">
             <span class="section-label">Тариф</span>
             <h2 class="pricing-card__price">
@@ -497,10 +482,9 @@
       </div>
     </section>
 
-    <!-- Final CTA -->
     <section class="cta-section" id="contact">
       <div class="container">
-        <div class="cta-box reveal">
+        <div class="cta-box">
           <span class="section-label">Пора поливать</span>
           <h2 class="cta-box__title">Расскажите о своём поле — подберём окно для вылета</h2>
           <p class="cta-box__desc">Напишите площадь, культуру и когда нужна влага. Ответим в течение часа, назовём срок выезда и сориентируем по стоимости.</p>
@@ -524,7 +508,6 @@
 
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer__grid">
@@ -568,7 +551,6 @@
     </div>
   </footer>
 
-  <!-- Mobile navigation -->
   <div class="mobile-nav" id="mobileNav" aria-hidden="true">
     <button type="button" class="mobile-nav__backdrop" id="mobileNavBackdrop" aria-label="Закрыть меню" tabindex="-1"></button>
     <div class="mobile-menu" id="mobileMenu">
@@ -585,6 +567,6 @@
     </div>
   </div>
 
-  <script src="js/main.js?v=3" defer></script>
+  <script src="js/main.js?v=15" defer></script>
 </body>
 </html>

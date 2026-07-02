@@ -1,4 +1,3 @@
-/* Lucide-style icon system */
 .icon {
   display: inline-block;
   width: 24px;
@@ -24,47 +23,8 @@
   height: 18px;
 }
 
-.icon--md {
-  width: 24px;
-  height: 24px;
-}
-
-.icon--lg {
-  width: 32px;
-  height: 32px;
-}
-
-.icon--xl {
-  width: 40px;
-  height: 40px;
-}
-
 .icon--accent {
   color: var(--accent);
-}
-
-.icon--white {
-  color: #fff;
-}
-
-.icon-wrap {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.icon-wrap--circle {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: var(--accent-bg);
-  color: var(--accent);
-}
-
-.icon-wrap--circle .icon {
-  width: 22px;
-  height: 22px;
 }
 
 .dropdown__item,
@@ -100,23 +60,6 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-}
-
-.hero__stat-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: rgba(74, 222, 128, 0.15);
-  color: var(--accent-light);
-  flex-shrink: 0;
-}
-
-.hero__stat-icon .icon {
-  width: 22px;
-  height: 22px;
 }
 
 .highlight-card__icon {
