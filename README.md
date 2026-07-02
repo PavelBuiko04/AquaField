@@ -79,6 +79,11 @@ Or open `index.html` directly — some behavior may differ without an HTTP serve
 
 ---
 
-## License
+## Copyright
 
-Demo landing page. Contact details and brand name are placeholders — replace them before production use.
+© 2026 AquaField · BY. All rights reserved.
+
+This is a **commercial project**. The source code, design, copy, and brand are proprietary.  
+You may **not** copy, fork, redistribute, or reuse any part of this repository without explicit written permission from the owner.
+
+The live site is provided for viewing only: [pavelbuiko04.github.io/AquaField](https://pavelbuiko04.github.io/AquaField/)
